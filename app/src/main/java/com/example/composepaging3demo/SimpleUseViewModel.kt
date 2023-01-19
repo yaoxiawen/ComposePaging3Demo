@@ -6,12 +6,12 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 
-class SimpleUseViewModel: ViewModel() {
+class SimpleUseViewModel : ViewModel() {
     companion object {
         private const val PAGE_SIZE = 5
     }
 
-    val recipesPager = Pager(PagingConfig(PAGE_SIZE)) {
+    val recipesPager = Pager(PagingConfig(PAGE_SIZE, initialLoadSize = PAGE_SIZE)) {
         SimpleUseSource()
     }.flow.cachedIn(viewModelScope)
 }
